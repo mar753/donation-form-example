@@ -3,7 +3,7 @@ import styles from './Content.module.scss'
 
 const Content = () => {
   return (
-    <div className={styles.containerttttt}>
+    <div className={styles.container}>
       <DonationForm />
     </div>
   )

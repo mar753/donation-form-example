@@ -1,0 +1,35 @@
+@import '../../colors.scss';
+
+.inputElement {
+  border-radius: 4px;
+  border: 1px solid #e9eef2;
+  outline: none;
+  padding: 16px 16px 16px 8px;
+  background: url(/dollar.svg) no-repeat scroll 8px 8px;
+  background-position-y: 50%;
+  padding-left: 30px;
+  display: flex;
+  align-content: center;
+  font-family: Rubik;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: left;
+  color: $text1-color;
+  box-sizing: border-box;
+  width: 100%;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.2);
+    opacity: 1; /* Firefox */
+  }
+
+  &::-ms-input-placeholder {
+    /* Edge 12 -18 */
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  &:focus {
+    border: 1px solid #423c66;
+  }
+}

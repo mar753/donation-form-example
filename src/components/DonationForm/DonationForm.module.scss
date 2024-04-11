@@ -42,6 +42,10 @@
   }
 }
 
+.formContent {
+  padding: 32px 24px 50px;
+}
+
 .typographyMobileH2 {
   @media screen and (max-width: 599px) {
     font-size: 24px;
@@ -65,4 +69,12 @@
   @media screen and (min-width: 600px) {
     display: none;
   }
+}
+
+.input {
+  margin-bottom: 16px;
+}
+
+.label {
+  margin-bottom: 6px;
 }

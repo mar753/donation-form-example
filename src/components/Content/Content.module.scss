@@ -1,8 +1,9 @@
 @import '../../colors.scss';
 
-.containerttttt {
+.container {
   display: flex;
   justify-content: center;
   background-color: $light-background-color;
   height: calc(100% - 80px);
+  box-sizing: border-box;
 }
