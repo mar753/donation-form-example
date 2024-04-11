@@ -1,9 +1,11 @@
-import styles from './App.module.scss'
+import Content from './components/Content/Content'
+import Header from './components/Header/Header'
 
-function App() {
+const App = () => {
   return (
     <>
-      <div className={styles.background}>Test</div>
+      <Header />
+      <Content />
     </>
   )
 }
