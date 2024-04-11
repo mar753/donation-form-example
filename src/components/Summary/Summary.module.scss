@@ -1,0 +1,48 @@
+@import '../../colors.scss';
+
+.summaryContainer {
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  margin-bottom: 40px;
+  border: 1px solid $border-alternative-color;
+  border-radius: 4px;
+
+  @media screen and (min-width: 600px) {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    border: none;
+  }
+
+  .fullAmountContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+
+    @media screen and (min-width: 600px) {
+      padding-top: 0;
+    }
+
+    .fullAmountCounter {
+      font-family: Inter;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 38.4px;
+    }
+  }
+
+  .banner {
+    background-color: $banner-background-color;
+    padding: 24px 16px 24px 16px;
+    border-radius: 5px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16.8px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}

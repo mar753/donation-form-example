@@ -1,30 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Calendar.module.scss'
 import chevronLeft from '/chevron_left.svg'
 import chevronRight from '/chevron_right.svg'
+import { getDateOneMonthForward, months } from '../../utils'
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-]
-
-const getDateOneMonthForward = () => {
-  const date = new Date()
-  date.setMonth(date.getMonth() + 1)
-  return date
-}
-
-const Calendar = () => {
+const Calendar = ({
+  id,
+  onChange,
+}: {
+  id?: string
+  onChange?: (value: Date) => void
+}) => {
   const [selectedDate, setSelectedDate] = useState(getDateOneMonthForward())
 
   const handleOneMonthEarlier = () => {
@@ -41,10 +27,12 @@ const Calendar = () => {
     setSelectedDate(selectedDateCopy)
   }
 
-  console.log(selectedDate.getMonth())
+  useEffect(() => {
+    onChange?.(new Date(selectedDate.getTime()))
+  }, [onChange, selectedDate])
 
   return (
-    <div className={styles.calendarContainer}>
+    <div id={id} className={styles.calendarContainer}>
       <img
         className={styles.chevronLeft}
         src={chevronLeft}

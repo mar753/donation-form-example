@@ -78,3 +78,40 @@
 .label {
   margin-bottom: 6px;
 }
+
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    gap: 24px;
+    margin-bottom: 24px;
+
+    > * {
+      flex: 1 1 0;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+
+  .continue {
+    margin: 8px;
+  }
+  .cancel {
+    margin: 8px;
+    display: none;
+  }
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    gap: 12px;
+
+    .cancel {
+      display: block;
+    }
+  }
+}
