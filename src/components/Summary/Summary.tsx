@@ -1,3 +1,4 @@
+import { useGenerateTwoNumberVariants } from '../../hooks'
 import { monthDifference, months } from '../../utils'
 import styles from './Summary.module.scss'
 
@@ -10,6 +11,8 @@ const Summary = ({
   startDate?: Date
   endDate?: Date
 }) => {
+  const convert = useGenerateTwoNumberVariants()
+
   return (
     <div className={styles.summaryContainer}>
       <div className={styles.fullAmountContainer}>
@@ -17,16 +20,18 @@ const Summary = ({
         <div className={styles.fullAmountCounter}>
           $
           {oneTimeAmount && startDate && endDate
-            ? (
-                Math.round(
-                  oneTimeAmount * monthDifference(startDate, endDate) * 100
-                ) / 100
-              ).toFixed(2)
+            ? convert(
+                (oneTimeAmount * monthDifference(startDate, endDate)).toString()
+              ).comma
             : '0'}
         </div>
       </div>
       <div className={styles.banner}>
-        You will be sending <strong>${oneTimeAmount}</strong> every month, until{' '}
+        You will be sending{' '}
+        <strong>
+          ${oneTimeAmount ? convert(oneTimeAmount?.toString()).comma : '0'}
+        </strong>{' '}
+        every month, until{' '}
         <strong>
           {(endDate && months[endDate?.getMonth()]) ?? ''}{' '}
           {endDate?.getFullYear() ?? ''}

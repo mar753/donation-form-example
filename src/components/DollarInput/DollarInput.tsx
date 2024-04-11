@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './DollarInput.module.scss'
+import { useGenerateTwoNumberVariants } from '../../hooks'
 
 const DollarInput = ({
   id,
@@ -12,38 +13,13 @@ const DollarInput = ({
 }) => {
   const [inputValue, setInputValue] = useState('')
   const [inputValueWithComma, setInputValueWithComma] = useState('')
+  const convert = useGenerateTwoNumberVariants()
 
   const handleInputValueChange = (value: string) => {
-    const numberRegexp = /[\d.]/
-    const filteredValues = value
-      .split('')
-      .filter((item) => numberRegexp.test(item))
-      .join('')
+    const { plain, comma } = convert(value)
 
-    const [integerPart, fractionalPart] = filteredValues.split('.')
-
-    if (integerPart.length > 3) {
-      const newFilteredValue = integerPart
-        .split('')
-        .slice()
-        .reverse()
-        .reduce((accumulator, currentValue, index, array) => {
-          const isLastIndex = index + 1 === array.length
-          return (
-            '' +
-            ((index + 1) % 3 || isLastIndex ? '' : ',') +
-            currentValue +
-            accumulator
-          )
-        }, '')
-
-      setInputValueWithComma(
-        `${newFilteredValue}${fractionalPart !== undefined ? `.${fractionalPart}` : ''}`
-      )
-    } else {
-      setInputValueWithComma(filteredValues)
-    }
-    setInputValue(filteredValues.replace(',', ''))
+    setInputValue(plain)
+    setInputValueWithComma(comma)
   }
 
   useEffect(() => {
@@ -55,7 +31,6 @@ const DollarInput = ({
       className={`${styles.inputElement}${className ? ` ${className}` : ''}`}
       type="text"
       placeholder="0.00"
-      pattern="^[0-9]{1,2}([,.][0-9]{1,2})?$"
       value={inputValueWithComma}
       onChange={(e) => handleInputValueChange(e.target.value)}
       id={id}
